@@ -1,46 +1,10 @@
-#BACKBASE WIDGET COOKBOOK
- 
-##Table of Contents
-
-+Introduction
-+Conventions
-++File names
-++Folder structure
-++Configuration File
-++Widget Import File
-+Widgets
-++Widget instances	
-++Markup	
-++Head Section	
-++Guidelines	
-++Body Section	
-++Guidelines	
-+Templates	
-++External Templates	
-++Internal Templates	
-+CSS	
-++Introduction	
-++Themeing	
-++CSS Development	
-++Guidelines	
-++Coding conventions	
-++CSS Preprocessors	
-+Javascript	
-++Starting Point	
-++Guidelines	
-++Coding conventions	
-++Available JS Frameworks	
-++Code Sample	
-++Advanced Concepts	
-++Event Binding	
-++Pubsub Pattern
-
+#BACKBASE WIDGET METHODOLOGY
  
 ##Introduction
 
-Widget cookbook is an initiative for defining the optimal way of writing a Backbase powered widget. The cookbook is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.
+Widget + methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.
 
-There are several factors that were taken into account when creating this cookbook:
+There are several factors that were taken into account when creating this methodology:
 + Usage of Backbase technologies
 + Maintainable and re-usable code
 + Performance
@@ -48,7 +12,6 @@ There are several factors that were taken into account when creating this cookbo
 + Frontend Best Practices
 
 The full list of NFR's that drive our standards and should be used in projects are in Addendum 1.
-
  
 ##Conventions
 
