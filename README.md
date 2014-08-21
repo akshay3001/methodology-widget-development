@@ -2,7 +2,7 @@
  
 ##Introduction
 
-Widget + methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.
+The Widget methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.
 
 There are several factors that were taken into account when creating this methodology:
 + Usage of Backbase technologies
@@ -38,7 +38,36 @@ The widget must have a configuration file named import.xml and exist in the root
 ###Widget Import File
 This is what the import.xml of the todo widget should look like:
 
- 
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widgets>
+    <widget>
+        <name>todo</name>
+        <contextItemName>[BBHOST]</contextItemName>
+        <properties>
+            <property name="TemplateName">
+                <value type="string">Standard_Widget</value>
+            </property>
+            <property label="Title" name="title" viewHint="text-input,user">
+                <value type="string">Todo App</value>
+            </property>
+            <property name="thumbnailUrl">
+                <value type="string">$(contextRoot)/static/test-and-target/media/icons/container-icon.png</value>
+            </property>
+            <property label="Widget Chrome" name="widgetChrome" viewHint="select-one,designModeOnly,user">
+                <value type="string">$(contextRoot)/static/backbase.com.2012.aurora/html/chromes/widget_none.html</value>
+            </property>
+            <property name="src">
+                <value type="string">$(contextRoot)/static/test-and-target/widgets/google-experiments-variant/index.html</value>
+            </property>
+        </properties>
+        <tags>
+            <tag>apps</tag>
+            <tag>site-tools</tag>
+        </tags>
+    </widget>
+</widgets>
+...
  
 ##Widgets
 
@@ -63,7 +92,17 @@ To make things even more complicated, keep in mind that you can have multiple wi
 
 ####Code Sample
 #####Head section of a widget
- 
+```HTML
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:g="http://www.backbase.com/2008/gadget">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Todo App</title>
+        <link rel="stylesheet" type="text/css" href="css/todo.css" />
+    </head>
+    <!-- Widget body goes here -->
+</html>
+```
 
 ####Body Section
 #####Guidelines
@@ -76,7 +115,14 @@ To make things even more complicated, keep in mind that you can have multiple wi
 
 ####Code Sample
 #####Body section of a widget
- 
+```HTML
+<body class="ba-todo" g:onload="requireWidget(__WIDGET__, 'js/todo');">
+    <header class="ba-todo-header">
+        <h1 class="ba-todo-title">todos</h1>
+        <input data-js="new-todo" class="ba-todo-field" placeholder="What needs to be done?" />
+    </header>
+</body>
+```
 
 ###Templates
 Templates can exist as part of your widget definition, or they can be separate files. In any case, use Mustache as your templating language.
@@ -84,7 +130,18 @@ Templates can exist as part of your widget definition, or they can be separate f
 ###External Templates
 They are separate html files and exist in the templates/ folder of your widget. Example:
 templates/list-example.html
- 
+```mustache
+<ul>
+    {{#links}}
+        <li>{{title}}</li>
+        <ul>
+           {{#children}}
+                <li>{{childTitle}}</li>
+           {{/children}}
+        </ul>
+    {{/links}}
+</ul>
+```
 
 ####When to use external templates:
 + You need your template to be server-side rendered
@@ -98,7 +155,29 @@ These templates are included within the widget definition.
 + Use the data-template attribute to name your templates.
 
 Example index.html:
- 
+```HTML
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:g="http://www.backbase.com/2008/gadget" xml:lang="en">
+<head>
+    <!-- Head Section -->
+</head>
+<body>
+    <!-- Body Section -->
+    <script type="text/html" data-template="link-list">
+        <ul>
+            {{#links}}
+                <li>{{title}}</li>
+                <ul>
+                   {{#children}}
+                        <li>{{childTitle}}</li>
+                   {{/children}}
+                </ul>
+            {{/links}}
+        </ul>
+    </script>
+</body>
+</html>
+```
 
 ####When to use internal templates:
 + You need to use the template dynamically (not when the widget is rendered but at some other point in time, eg. after some user interaction)
@@ -142,7 +221,84 @@ Twitter Bootstrap is the way of defining and using styles for your project. It c
 + CSS classes must start with <project prefix>-<widget name>- (eg. ba-todo-list-item)
 ####CSS Preprocessors
 Backbase have chosen for LESS when working with twitter bootstrap theme's to give the benefits of general CSS preprocessing. Twitter Bootstrap also have opted for LESS as there go to preprocessors, giving us better all round support in combination. Plus we get a few tools to boot: http://getbootstrap.com/customize/#less
+####BAD CSS
+```CSS
+/* Example 1
+** Long selectors
+**/
+.ba-sidebar .ba-block .ba-small-text {
+    font-size: 12px;
+    color: #ddd;
+}
+/* Selector performance is bad and you cannot re-use this note style elsewhere */
+ 
+/* Example 2
+** Grouping selectors
+**/
+.ba-list-item {
+   color: #333;
+   font-size: 13px;
+   text-decoration: underline;
+}
+ 
+.ba-note {
+   color: #333;
+   font-size: 13px;
+}
+/* Code is repeated, styles are not re-usable */
 
+ 
+/* Example 3
+** Tidy styles
+**/
+.ba-main-title {padding: 10px;font-size: 2em;color: #c00;margin-bottom: 1em;font-weight: b old;background: #fff;}
+/* Code is unreadable and unmaintainable. Version Control is also impossible */
+
+'''
+####GOOD CSS
+```CSS
+/* Example 1
+** Long selectors
+**/
+.ba-note {
+    font-size: 12px;
+    color: #ddd;
+}
+/* faster, more semantic, and re-usable everywhere */
+ 
+/* Example 2
+** Grouping selectors
+**/
+.ba-list-item,
+.ba-note {
+   color: #333;
+   font-size: 13px;
+}
+.ba-list-item {
+   text-decoration: underline;
+}
+/* Code is less bloated and more manageable */
+  
+/* Example 3
+** Tidy styles
+**/
+.ba-main-title {
+   /* fonts group */
+   font-size: 2em;
+   font-weight: bold;
+ 
+   /* colors group */
+   color: #c00;
+   background: #fff;
+ 
+   /* box model group */
+   padding: 10px;
+   margin-bottom: 1em;
+ 
+   /* position group also possible */
+}
+/* rules are logically organized by group and easy to lookup and maintain */
+```
 ##Javascript
 ###Starting Point
 These guidelines will help you jump-start your widget development in a structured way.
@@ -172,7 +328,46 @@ These guidelines will help you jump-start your widget development in a structure
 + AngularJS is our recommended toolset when widget functionalities meet our definition of what requires an MVC pattern. See Advanced Concepts
  
 ###Code Sample
- 
+```javascript
+ define(["portal!mustache", "portal!jquery"], function(Mustache, $) {
+     "use strict";
+     var CLASSES = {
+         COMPLETED: 'ba-todo-completed',
+         HIDDEN: 'ba-hidden' // this is something used all over the project, so it doesn't have the widget prefix
+     };
+  
+     // they should all be a data-js attribute
+     var SELECTORS = {
+         FIELD: '[data-js=new-todo]',
+         LIST: '[data-js=todo-list]'
+     };
+  
+     // Contructor here
+     function Todo(widget) {
+         this.widget = widget;
+         this.$widgetBody = $(widget.body);
+     }
+  
+     // Widget methods here
+     Todo.prototype = {
+         init : function () {
+             // init code in here
+         }
+     };
+  
+     // other private helpers go here
+     var _private = {
+         formatTitle : function () {},
+         showOverlay : function () {}
+     };
+  
+     return function(widget) {
+         var todo = new Todo(widget);
+         todo.init();
+         return todo;
+     };
+ });
+ ```
  
 ##Advanced Concepts
 ###Event Binding
@@ -180,6 +375,18 @@ These guidelines will help you jump-start your widget development in a structure
 + Do all the event binding in the widget init() function.
 + Create the handling of the event in a separate function.
 + Put a short comment to explain what the event does.
+```javascript
+Todo.prototype = {
+    init : function () {
+        /* Click on an item to toggle its completed status */
+        this.$widgetBody.on('click', SELECTORS.LIST_ITEM, selectListItemHandler);
+    }
+
+    var selectListItemHandler= function(evt) {
+
+    };
+};
+```
  
 ###Pubsub Pattern
 Use the pubsub pattern for communication with components outside the widget. Pubsub pattern is good for avoiding hard coupling the widget with the rest of the portal, but it still is some sort of coupling and should be used with caution.
