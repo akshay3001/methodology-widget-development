@@ -67,7 +67,7 @@ This is what the import.xml of the todo widget should look like:
         </tags>
     </widget>
 </widgets>
-...
+```
  
 ##Widgets
 
@@ -253,8 +253,7 @@ Backbase have chosen for LESS when working with twitter bootstrap theme's to giv
 **/
 .ba-main-title {padding: 10px;font-size: 2em;color: #c00;margin-bottom: 1em;font-weight: b old;background: #fff;}
 /* Code is unreadable and unmaintainable. Version Control is also impossible */
-
-'''
+```
 ####GOOD CSS
 ```CSS
 /* Example 1
