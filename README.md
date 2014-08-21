@@ -150,7 +150,7 @@ templates/list-example.html
 
 ####Internal Templates
 These templates are included within the widget definition. 
-+ Always put the template in a <script> tag, for performance reasons.
++ Always put the template in a `script` tag, for performance reasons.
 + Append all templates at the end of the widget's <body> element.
 + Use the data-template attribute to name your templates.
 
