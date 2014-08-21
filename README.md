@@ -28,6 +28,8 @@ Inside the widget folder, there should be the following folder:
 + media/ for all images and other static files (eg. pdfs or videos)
 + templates/ for all templates (eg. ICE templates)
 
+![File Structure](https://raw.githubusercontent.com/Backbase/methodology-widget-development/master/media/todo-file-structure.png "File Structure")
+
 An example of the structure for the ‘Todo widget’, would be something like this: 
 Configuration File
 The widget must have a configuration file named import.xml and exist in the root folder of the widget.
