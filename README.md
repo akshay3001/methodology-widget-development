@@ -28,9 +28,24 @@ Inside the widget folder, there should be the following folder:
 + media/ for all images and other static files (eg. pdfs or videos)
 + templates/ for all templates (eg. ICE templates)
 
-![File Structure](https://raw.githubusercontent.com/Backbase/methodology-widget-development/master/media/todo-file-structure.png "File Structure")
+###Todo
+>-index.html
+>> css
+>>> -todo.css
+>>>
+>>
+>> js    
+>>> -todo.js
+>>>
+>>
+>> media
+>>> -mySprite.png
+>>>
+>>
+>> templates
+>>> -example.mustache
 
-An example of the structure for the ‘Todo widget’, would be something like this: 
+
 Configuration File
 The widget must have a configuration file named import.xml and exist in the root folder of the widget.
 + <name> should be hyphenated (eg. transaction-activity)
@@ -223,6 +238,7 @@ Twitter Bootstrap is the way of defining and using styles for your project. It c
 + CSS classes must start with <project prefix>-<widget name>- (eg. ba-todo-list-item)
 ####CSS Preprocessors
 Backbase have chosen for LESS when working with twitter bootstrap theme's to give the benefits of general CSS preprocessing. Twitter Bootstrap also have opted for LESS as there go to preprocessors, giving us better all round support in combination. Plus we get a few tools to boot: http://getbootstrap.com/customize/#less
+
 ####BAD CSS
 ```CSS
 /* Example 1
