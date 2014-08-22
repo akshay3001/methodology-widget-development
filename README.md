@@ -28,6 +28,8 @@ Inside the widget folder, there should be the following folder:
 + media/ for all images and other static files (eg. pdfs or videos)
 + templates/ for all templates (eg. ICE templates)
 
+An example of the structure for the ‘Todo widget’, would be something like this: 
+
 ###Todo
 >-index.html
 >> css
@@ -123,10 +125,10 @@ To make things even more complicated, keep in mind that you can have multiple wi
 
 ####Body Section
 #####Guidelines
-+ Always put a class on your body like this: <project prefix>-<widget name>. eg. ba-todo
-+ Use semantic markup. Favor native HTML elements instead of extra classes. eg. use <h1> instead of <div class="ba-main-header">
++ Always put a class on your body like this: `<project prefix>-<widget name>`. eg. ba-todo
++ Use semantic markup. Favor native HTML elements instead of extra classes. eg. use `<h1>` instead of `<div class="ba-main-header">`
 + Prefix all your classes that are widget-specific with your widget class. For example, for a sidebar use: ba-todo-sidebar
-+ Don't mix classes for styling and javascript hooks. Use the data attribute named data-js. eg. <button data-js="submit-form"></button>
++ Don't mix classes for styling and javascript hooks. Use the data attribute named data-js. eg. `<button data-js="submit-form"></button>`
 + Don't write inline javascript
 + Don't write inline CSS
 
@@ -145,7 +147,7 @@ To make things even more complicated, keep in mind that you can have multiple wi
 Templates can exist as part of your widget definition, or they can be separate files. In any case, use Mustache as your templating language.
  
 ###External Templates
-They are separate html files and exist in the templates/ folder of your widget. Example:
+They are separate html files and exist in the templates / folder of your widget. Example:
 templates/list-example.html
 ```mustache
 <ul>
@@ -167,8 +169,8 @@ templates/list-example.html
 
 ####Internal Templates
 These templates are included within the widget definition. 
-+ Always put the template in a `script` tag, for performance reasons.
-+ Append all templates at the end of the widget's <body> element.
++ Always put the template in a `<script/>` tag, for performance reasons.
++ Append all templates at the end of the widget's `<body>` element.
 + Use the data-template attribute to name your templates.
 
 Example index.html:
@@ -235,7 +237,7 @@ Twitter Bootstrap is the way of defining and using styles for your project. It c
  
 ####Coding conventions
 + Class names should be all lowercase, with dashes as separators (eg. ba-my-article-comments)
-+ CSS classes must start with <project prefix>-<widget name>- (eg. ba-todo-list-item)
++ CSS classes must start with `<project prefix>-<widget name>- (eg. ba-todo-list-item)`
 ####CSS Preprocessors
 Backbase have chosen for LESS when working with twitter bootstrap theme's to give the benefits of general CSS preprocessing. Twitter Bootstrap also have opted for LESS as there go to preprocessors, giving us better all round support in combination. Plus we get a few tools to boot: http://getbootstrap.com/customize/#less
 
