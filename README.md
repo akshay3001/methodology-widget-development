@@ -55,10 +55,11 @@ An example of the structure for the ‘Todo widget’, would be something like t
 ###Configuration File
 
 The widget must have a configuration file named import.xml and exist in the root folder of the widget.
-+ <name> should be hyphenated (eg. transaction-activity)
-+ mandatory properties: TemplateName, Title, thumbnailUrl, widgetChrome, src
-+ Semantic tags should be used to characterize the widget
- 
+ + <name> should be hyphenated (eg. transaction-activity)
+ + mandatory properties: TemplateName, Title, thumbnailUrl, widgetChrome, src
+ + Semantic tags should be used to characterize the widget
+
+
 ###Widget Import File
 
 This is what the import.xml of the todo widget should look like:
