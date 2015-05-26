@@ -120,9 +120,10 @@ To make things even more complicated, keep in mind that you can have multiple wi
 + Define metadata, as required per project
 + Use the widget namespace
 
-####Code Sample
 
-#####Head section of a widget
+#### Code Sample
+
+##### Head section of a widget
 
 ```HTML
 <!DOCTYPE html>
@@ -384,7 +385,8 @@ These guidelines will help you jump-start your widget development in a structure
 
 + RequireJS is always be used when defining the widget resources and introducing JS behaviour, as in the code sample
 + AngularJS is our recommended toolset when widget functionalities meet our definition of what requires an MVC pattern. See Advanced Concepts
- 
+
+
 ###Code Sample
 
 ```javascript
