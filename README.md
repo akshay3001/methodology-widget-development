@@ -1,8 +1,9 @@
-#BACKBASE WIDGET METHODOLOGY
- 
+#Widget Development Methodology
+
 ##Introduction
 
-The Widget methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.
+The Widget methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.   
+
 
 There are several factors that were taken into account when creating this methodology:
 + Usage of Backbase technologies
@@ -12,7 +13,7 @@ There are several factors that were taken into account when creating this method
 + Frontend Best Practices
 
 The full list of NFR's that drive our standards and should be used in projects are in Addendum 1.
- 
+
 ##Conventions
 
 ###File names
