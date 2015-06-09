@@ -1,6 +1,6 @@
 #Widget Development Methodology
 
-##Introduction
+###Introduction
 
 The Widget methodology is an initiative for defining the optimal way of writing a Backbase powered widget. The methodology is a mix of code samples, guidelines and descriptions, aimed at helping people develop widgets in a way, that will ensure the long term value of them.   
 
