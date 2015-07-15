@@ -253,7 +253,7 @@ Twitter Bootstrap is the way of defining and using styles for your project. It c
 + Don't use ids for styling.
 + Avoid long selectors.
 + Avoid styling tags, use classes instead (eg. instead of styling ul.ba-list > li create a new class named ba-list-item and style directly that)
-+ Prefer using CSS3 over over techniques (eg. gradients or rounded corners)
++ Prefer using CSS3 over techniques (eg. gradients or rounded corners)
 + Group relative styles together, avoid re-writing the same rules.
 + Try to be semantic with class names when needed, but not only for the sake of semantics (eg. grid classes like: span12 are fine, even if they are not semantic at all)
 + Avoid arbitrary values (why do you need a margin-left: 12px?)
@@ -458,3 +458,12 @@ Use the pubsub pattern for communication with components outside the widget. Pub
 + When using subscribe, make sure your widget works without it. Lets assume you have 2 widgets: Filters widget and List widget. The List widget "listens" to a channel that the Filter widget publishes the filter changed event to. The List widget should in any case have some default settings for getting data, even if the Filter widget is not present in the page.
 + When you publish an event, pass along all the data. Don't depend on DOM or any other structure for pulling the data.
 + Pubsub is stateless and without any history information and should be treated as such (pass all the data needed with each publish, don't rely on previous states)
+
+
+##Tips
+
+###BB-CLI
+
+You can easily generate your widgets using the Backbase CLI tool, also you can contribute with improvements for it.
+
+To see more click [here](https://github.com/Backbase/bb-cli).
