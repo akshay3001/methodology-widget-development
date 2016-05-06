@@ -12,8 +12,6 @@ There are several factors that were taken into account when creating this method
 + Code uniformity
 + Frontend Best Practices
 
-The full list of NFR's that drive our standards and should be used in projects are in Addendum 1.
-
 ##Conventions
 
 ###File names
