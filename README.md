@@ -34,28 +34,28 @@ An example of the structure for the ‘Todo widget’, would be something like t
 
 ###Todo
 
->-index.html
->-bower.json
->-icon.png
->-model.xml
->-README.md
+>+ index.html
+>+ bower.json
+>+ icon.png
+>+ model.xml
+>+ README.md
 >> styles
->>> -base.css
+>>> + base.less
 >>>
 >>
 >> scripts    
->>> -main.js
->>> -controller.js
->>> -models.js
+>>> + main.js
+>>> + controller.js
+>>> + models.js
 >>>
 >>
 >> media
->>> -media.png
+>>> + media.png
 >>>
 >>
 >> templates
->>> -template.mustache
->>> -template.html
+>>> + template.mustache
+>>> + template.html
 
 
 ###Configuration File
