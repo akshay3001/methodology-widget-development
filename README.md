@@ -35,20 +35,27 @@ An example of the structure for the ‘Todo widget’, would be something like t
 ###Todo
 
 >-index.html
+>-bower.json
+>-icon.png
+>-model.xml
+>-README.md
 >> styles
->>> -todo.css
+>>> -base.css
 >>>
 >>
 >> scripts    
->>> -todo.js
+>>> -main.js
+>>> -controller.js
+>>> -models.js
 >>>
 >>
 >> media
->>> -mySprite.png
+>>> -media.png
 >>>
 >>
 >> templates
->>> -example.mustache
+>>> -template.mustache
+>>> -template.html
 
 
 ###Configuration File
@@ -220,11 +227,11 @@ Example index.html:
 + You need to access the template directly in JS
 + You need to get the data with an ajax call
 
-###Partials
+### LP/BB-Templates
 
-Partials are separate files which you can use them to decrease the big amount of code in the index.html file, it's quite easy to work with, basically what you need to do is call the lp-template directive.
+LP/BB-Templates are separate files which you can use them to decrease the big amount of code in the index.html file, it's quite easy to work with, basically what you need to do is call the lp-template directive.
  
-####How to use partials
+####How to use lp/bb-templates
 ```
 <body g:onload="requireWidget(__WIDGET__, 'scripts/main')" class="todo">
 	<div ng-controller="MainCtrl as mainCtrl">
@@ -402,49 +409,65 @@ These guidelines will help you jump-start your widget development in a structure
 + AngularJS is our recommended toolset when widget functionalities meet our definition of what requires an MVC pattern. See Advanced Concepts
 
 
-###Code Sample
+###Code Sample main.js
 
 ```
- define(["portal!mustache", "portal!jquery"], function(Mustache, $) {
-     "use strict";
-     
-     var CLASSES = {
-         COMPLETED: 'todo-completed',
-         HIDDEN: 'hidden' // this is something used all over the project, so it doesn't have the widget prefix
-     };
-  
-     // they should all be a data-js attribute
-     var SELECTORS = {
-         FIELD: '[data-js=new-todo]',
-         LIST: '[data-js=todo-list]'
-     };
-  
-     // Contructor here
-     function Todo(widget) {
-         this.widget = widget;
-         this.$widgetBody = $(widget.body);
-     }
-  
-     // Widget methods here
-     Todo.prototype = {
-         init : function () {
-             // init code in here
-         }
-     };
-  
-     // other private helpers go here
-     var _private = {
-         formatTitle : function () {},
-         showOverlay : function () {}
-     };
-  
-     return function(widget) {
-         var todo = new Todo(widget);
-         todo.init();
-         return todo;
-     };
- });
- ```
+ /**
+ *  ----------------------------------------------------------------
+ *  Copyright © Backbase B.V.
+ *  ----------------------------------------------------------------
+ *  Filename : main.js
+ *  Description: ${widget.description}
+ *  ----------------------------------------------------------------
+ */
+
+define( function (require, exports, module) {
+    'use strict';
+
+    module.name = 'ginclude';
+
+    var deps = [];
+
+    /**
+     * @ngInject
+     */
+    function run() {
+        // Module is Bootstrapped
+    }
+
+    module.exports = base.createModule(module.name, deps)
+        .constant('WIDGET_NAME', module.name)
+        .controller( require('./controllers') )
+        .service( require('./models') )
+        .run( run );
+});
+```
+
+###Code Sample controller.js
+
+```
+/**
+ * Controllers
+ * @module controllers
+ */
+define(function (require, exports) {
+    'use strict';
+
+    /**
+     * Main controller
+     * @ngInject
+     * @constructor
+     */
+    function MainCtrl(WidgetModel) {
+        this.model = WidgetModel;
+    }
+
+    /**
+     * Export Controllers
+     */
+    exports.MainCtrl = MainCtrl;
+});
+```
  
 ##Advanced Concepts
 
