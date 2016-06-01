@@ -34,33 +34,33 @@ An example of the structure for the ‘Todo widget’, would be something like t
 
 ###Todo
 
->+ index.html
->+ bower.json
->+ icon.png
->+ model.xml
->+ README.md
+>-index.html
+>-bower.json
+>-icon.png
+>-model.xml
+>-README.md
 >> styles
->>> + base.less
+>>> -base.less
 >>>
 >>
 >> scripts    
->>> + main.js
->>> + controller.js
->>> + models.js
+>>> -main.js
+>>> -controller.js
+>>> -models.js
 >>>
 >>
 >> media
->>> + media.png
+>>> -media.png
 >>>
 >>
 >> templates
->>> + template.mustache
->>> + template.html
+>>> -template.mustache
+>>> -template.html
 
 
 ###Configuration File
 
-The widget must have a configuration file named import.xml and exist in the root folder of the widget.
+The widget must have a configuration file named model.xml and exist in the root folder of the widget.
  + <name> should be hyphenated (eg. transaction-activity)
  + mandatory properties: TemplateName, Title, thumbnailUrl, widgetChrome, src
  + Semantic tags should be used to characterize the widget
@@ -127,7 +127,7 @@ To make things even more complicated, keep in mind that you can have multiple wi
 
 ##### Head section of a widget
 
-```
+```HTML
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:g="http://www.backbase.com/2008/gadget" xml:lang="en">
 	<head>
@@ -232,7 +232,7 @@ Example index.html:
 LP/BB-Templates are separate files which you can use them to decrease the big amount of code in the index.html file, it's quite easy to work with, basically what you need to do is call the lp-template directive.
  
 ####How to use lp/bb-templates
-```
+```HTML
 <body g:onload="requireWidget(__WIDGET__, 'scripts/main')" class="todo">
 	<div ng-controller="MainCtrl as mainCtrl">
         <div lp-template="'templates/main.ng.html'"></div>
